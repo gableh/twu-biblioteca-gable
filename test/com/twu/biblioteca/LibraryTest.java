@@ -6,7 +6,7 @@ import org.junit.Test;
 
 public class LibraryTest {
     @Test
-    public void getCollectionShouldReturnAllLibraryBooks() {
+    public void getCollectionShouldReturnAllAvailableLibraryBooks() {
         Book b1 = new Book("t1", "a1", 1993);
         Book b2 = new Book("t2", "a2", 1994);
         Book b3 = new Book("t3", "a3", 1995);
@@ -16,10 +16,23 @@ public class LibraryTest {
 
         Library library = new Library(bookstore);
 
-        Book[] libraryBooks = library.getBooks();
+        Book[] libraryBooks = library.getAvailableBooks();
         assertEquals(libraryBooks[0], b1);
         assertEquals(libraryBooks[1], b2);
         assertEquals(libraryBooks[2], b3);
         assertEquals(libraryBooks[3], b4);
+    }
+
+    @Test
+    public void findBooksByTitleShouldReturnAllBooksWithTitle() {
+        BookStore bookstore = new BookStore();
+
+        Library library = new Library(bookstore);
+
+        Book[] books = library.findBooksByTitle("t1");
+
+        for (int i = 0; i < books.length; i++) {
+            assertEquals("t1", books[i].getTitle());
+        }
     }
 }

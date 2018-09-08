@@ -22,7 +22,7 @@ public class BibliotecaApp {
             UI.displaySystemMessage(UIEnum.USER_INPUT);
             userInput = br.readLine();
             if (userInput.equals(OptionListEnum.LISTBOOK.getValue())) {
-                Book[] books = library.getBooks();
+                Book[] books = library.getAvailableBooks();
                 UI.displayBooks(books);
             } else if (userInput.equals(OptionListEnum.QUIT.getValue())) {
                 hasNotQuit = false;
