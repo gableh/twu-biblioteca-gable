@@ -26,10 +26,18 @@ class UI {
             case CHECKOUT_SUCCESS:
                 System.out.println("Thank you! Enjoy the book.");
                 break;
+            case USER_INPUT:
+                System.out.println("What would you like to do?");
+                break;
         }
     }
 
-    static void displayMessage(Object obj) {
-        System.out.println(obj.toString());
+    static void displayBooks(Book[] books) {
+        System.out.println("List of Available Books:");
+        System.out.println("------------------------");
+        for (int i = 0; i < books.length; i++) {
+            System.out.println(books[i]);
+        }
+        System.out.println("------------------------");
     }
 }

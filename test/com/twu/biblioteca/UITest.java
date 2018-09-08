@@ -71,8 +71,26 @@ public class UITest {
     }
 
     @Test
+    public void itShouldDisplayAUserInputMessage() {
+        UI.displaySystemMessage(UIEnum.USER_INPUT);
+        assertEquals("What would you like to do?\n", outContent.toString());
+    }
+
+
+    @Test
     public void displayMessageShouldDisplayObjAsString() {
-        UI.displayMessage("Testing Testing 123");
-        assertEquals("Testing Testing 123\n", outContent.toString());
+        Book book1 = new Book("book2", "author", 1993);
+        Book book2 = new Book("book2", "author", 1993);
+        Book book3 = new Book("book3", "author", 1993);
+
+        Book[] books = {book1, book2, book3};
+
+        UI.displayBooks(books);
+        assertEquals("List of Available Books:\n" +
+                "------------------------\n" +
+                "Title: book2, Author: author, Year Published: 1993\n" +
+                "Title: book2, Author: author, Year Published: 1993\n" +
+                "Title: book3, Author: author, Year Published: 1993\n" +
+                "------------------------\n" , outContent.toString());
     }
 }

@@ -15,17 +15,19 @@ public class BibliotecaApp {
         BookStore bookstore = new BookStore();
         Library library = new Library(bookstore);
 
-        UI.displayMessage(UIEnum.WELCOME_MESSAGE);
+        UI.displaySystemMessage(UIEnum.WELCOME_MESSAGE);
 
         while (hasNotQuit) {
-            UI.displayMessage(UIEnum.OPTION_LIST);
+            UI.displaySystemMessage(UIEnum.OPTION_LIST);
+            UI.displaySystemMessage(UIEnum.USER_INPUT);
             userInput = br.readLine();
             if (userInput.equals(OptionListEnum.LISTBOOK.getValue())) {
                 Book[] books = library.getBooks();
+                UI.displayBooks(books);
             } else if (userInput.equals(OptionListEnum.QUIT.getValue())) {
                 hasNotQuit = false;
             } else {
-                UI.displayMessage(UIEnum.OPTION_INVALID);
+                UI.displaySystemMessage(UIEnum.OPTION_INVALID);
             }
         }
     }
