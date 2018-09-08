@@ -2,7 +2,9 @@ package com.twu.biblioteca;
 
 public enum OptionListEnum {
     QUIT("Quit"),
-    LISTBOOK("List Books");
+    LISTBOOK("List Books"),
+    CHECKOUTBOOK("Checkout Book"),
+    RETURNBOOK("Return Book");
 
     private final String value;
 

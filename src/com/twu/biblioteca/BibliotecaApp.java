@@ -16,9 +16,10 @@ public class BibliotecaApp {
     private static boolean hasNotQuit = true;
     private String userInput;
     private String bookTitle;
+    private BufferedReader br;
 
     public void run() throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        br = new BufferedReader(new InputStreamReader(System.in));
 
         BookStore bookstore = new BookStore();
         Library library = new Library(bookstore);
@@ -31,27 +32,31 @@ public class BibliotecaApp {
             UI.displaySystemMessage(UIEnum.USER_INPUT);
             userInput = br.readLine();
 
-            if (userInput.equals(OptionListEnum.LISTBOOK.getValue())) {
+            if (userInput.equalsIgnoreCase(OptionListEnum.LISTBOOK.getValue())) {
                 Book[] books = library.getAvailableBooks();
                 UI.displayBooks(books);
 
-            } else if (userInput.equals(OptionListEnum.QUIT.getValue())) {
+            } else if (userInput.equalsIgnoreCase(OptionListEnum.QUIT.getValue())) {
                 hasNotQuit = false;
 
-            } else if (userInput.equals("return book")) {
-                bookTitle = "t1";
-                Book[] books = library.findBooksByTitle(bookTitle);
+            } else if (userInput.equalsIgnoreCase(OptionListEnum.RETURNBOOK.getValue())) {
+                Book[] books = requestTitle(library);
                 alterBook(books, UIEnum.RETURN_FAIL, UIEnum.RETURN_SUCCESS, Book::returnBook);
 
-            } else if (userInput.equals("checkout book")) {
-                bookTitle = "t1";
-                Book[] books = library.findBooksByTitle(bookTitle);
+            } else if (userInput.equalsIgnoreCase(OptionListEnum.CHECKOUTBOOK.getValue())) {
+                Book[] books = requestTitle(library);
                 alterBook(books, UIEnum.CHECKOUT_FAIL, UIEnum.CHECKOUT_SUCCESS, Book::checkout);
 
             } else {
                 UI.displaySystemMessage(UIEnum.OPTION_INVALID);
             }
         }
+    }
+
+    private Book[] requestTitle(Library library) throws IOException {
+        UI.displaySystemMessage(UIEnum.USER_INPUT_BOOK);
+        bookTitle = br.readLine();
+        return library.findBooksByTitle(bookTitle);
     }
 
     private void alterBook(Book[] books, UIEnum Fail, UIEnum Success, Function<Book, Boolean> alter) {

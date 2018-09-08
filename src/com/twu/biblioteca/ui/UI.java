@@ -11,7 +11,9 @@ public class UI {
             case OPTION_LIST:
                 System.out.println("List of available options.");
                 System.out.println("1. List Books");
-                System.out.println("2. Quit");
+                System.out.println("2. Checkout Book");
+                System.out.println("3. Return Book");
+                System.out.println("4. Quit");
                 break;
             case OPTION_INVALID:
                 System.out.println("Select a valid option!");
@@ -30,6 +32,9 @@ public class UI {
                 break;
             case USER_INPUT:
                 System.out.println("What would you like to do?");
+                break;
+            case USER_INPUT_BOOK:
+                System.out.println("Please enter a book title.");
                 break;
         }
     }
