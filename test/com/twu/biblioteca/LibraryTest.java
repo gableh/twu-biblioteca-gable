@@ -12,15 +12,14 @@ public class LibraryTest {
         Book b3 = new Book("t3", "a3", 1995);
         Book b4 = new Book("t4", "a4", 1996);
 
-        Book[] books = {b1, b2, b3, b4};
+        BookStore bookstore = new BookStore();
 
-        Library library = new Library(books);
+        Library library = new Library(bookstore);
 
         Book[] libraryBooks = library.getBooks();
         assertEquals(libraryBooks[0], b1);
         assertEquals(libraryBooks[1], b2);
         assertEquals(libraryBooks[2], b3);
         assertEquals(libraryBooks[3], b4);
-
     }
 }

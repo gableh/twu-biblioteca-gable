@@ -4,8 +4,8 @@ public class Library {
 
     private Book[] collection;
 
-    public Library (Book[] initialBooks) {
-        this.collection = initialBooks;
+    public Library (BookStore bookstore) {
+        this.collection = bookstore.get();
     }
 
     public Book[] getBooks() {

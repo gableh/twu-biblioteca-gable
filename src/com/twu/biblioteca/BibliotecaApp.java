@@ -11,12 +11,17 @@ public class BibliotecaApp {
 
     public void run() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        BookStore bookstore = new BookStore();
+        Library library = new Library(bookstore);
+
         UI.displayMessage(UIEnum.WELCOME_MESSAGE);
+
         while (hasNotQuit) {
             UI.displayMessage(UIEnum.OPTION_LIST);
             userInput = br.readLine();
             if (userInput.equals(OptionListEnum.LISTBOOK.getValue())) {
-                // list books.
+                Book[] books = library.getBooks();
             } else if (userInput.equals(OptionListEnum.QUIT.getValue())) {
                 hasNotQuit = false;
             } else {
