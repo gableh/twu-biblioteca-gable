@@ -8,6 +8,7 @@ public class BibliotecaApp {
 
     private static boolean hasNotQuit = true;
     private String userInput;
+    private String bookTitle;
 
     public void run() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -26,9 +27,27 @@ public class BibliotecaApp {
                 UI.displayBooks(books);
             } else if (userInput.equals(OptionListEnum.QUIT.getValue())) {
                 hasNotQuit = false;
+            } else if (userInput.equals("return book")) {
+                bookTitle = "t1";
+                Book[] books = library.findBooksByTitle(bookTitle);
+                alterBook(books, UIEnum.RETURN_FAIL, UIEnum.RETURN_SUCCESS);
+            } else if (userInput.equals("checkout book")) {
+                bookTitle = "t1";
+                Book[] books = library.findBooksByTitle(bookTitle);
+                alterBook(books, UIEnum.CHECKOUT_FAIL, UIEnum.CHECKOUT_SUCCESS);
             } else {
                 UI.displaySystemMessage(UIEnum.OPTION_INVALID);
             }
+        }
+    }
+
+    private void alterBook(Book[] books, UIEnum returnFail, UIEnum returnSuccess) {
+        if (books.length > 1) {
+            // Display multiple books found, possible filtering by author
+        } else if (books.length == 0) {
+            UI.displaySystemMessage(returnFail);
+        } else {
+            UI.displaySystemMessage(books[0].returnBook() ? returnSuccess : returnFail);
         }
     }
 }

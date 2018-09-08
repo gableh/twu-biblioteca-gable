@@ -27,12 +27,20 @@ public class Book {
 
     String getTitle() { return title; }
 
-    void checkout() {
-        this.isCheckedOut = true;
+    boolean checkout() {
+        if(!this.isCheckedOut) {
+            this.isCheckedOut = true;
+            return true;
+        }
+        return false;
     }
 
-    void returnBook() {
-        this.isCheckedOut = false;
+    boolean returnBook() {
+        if(this.isCheckedOut) {
+            this.isCheckedOut = false;
+            return true;
+        }
+        return false;
     }
 
     @Override
