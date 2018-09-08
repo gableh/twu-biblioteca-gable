@@ -1,8 +1,8 @@
 package com.twu.biblioteca;
 
-public class UI {
-    public static void displayMessage(UIEnum msg) {
-        switch(msg) {
+class UI {
+    static void displaySystemMessage(UIEnum msg) {
+        switch (msg) {
             case WELCOME_MESSAGE:
                 System.out.println("Welcome!");
                 break;
@@ -27,6 +27,9 @@ public class UI {
                 System.out.println("Thank you! Enjoy the book.");
                 break;
         }
+    }
 
+    static void displayMessage(Object obj) {
+        System.out.println(obj.toString());
     }
 }

@@ -30,44 +30,49 @@ public class UITest {
 
     @Test
     public void itShouldDisplayAWelcomeMessage() {
-        UI.displayMessage(UIEnum.WELCOME_MESSAGE);
+        UI.displaySystemMessage(UIEnum.WELCOME_MESSAGE);
         assertEquals("Welcome!\n", outContent.toString());
     }
 
     @Test
     public void itShouldDisplayAnOptionListMessage() {
-        UI.displayMessage(UIEnum.OPTION_LIST);
-        assertEquals("List of available options.\nList Books\nQuit\n", outContent.toString());
+        UI.displaySystemMessage(UIEnum.OPTION_LIST);
+        assertEquals("List of available options.\n1. List Books\n2. Quit\n", outContent.toString());
     }
 
     @Test
     public void itShouldDisplayAnInvalidOptionMessage() {
-        UI.displayMessage(UIEnum.OPTION_INVALID);
+        UI.displaySystemMessage(UIEnum.OPTION_INVALID);
         assertEquals("Select a valid option!\n", outContent.toString());
     }
 
     @Test
     public void itShouldDisplayAReturnFailMessage() {
-        UI.displayMessage(UIEnum.RETURN_FAIL);
+        UI.displaySystemMessage(UIEnum.RETURN_FAIL);
         assertEquals("That is not a valid book to return.\n", outContent.toString());
     }
 
     @Test
     public void itShouldDisplayACheckoutFailMessage() {
-        UI.displayMessage(UIEnum.CHECKOUT_FAIL);
+        UI.displaySystemMessage(UIEnum.CHECKOUT_FAIL);
         assertEquals("That book is not available.\n", outContent.toString());
     }
 
     @Test
     public void itShouldDisplayAReturnSuccessMessage() {
-        UI.displayMessage(UIEnum.RETURN_SUCCESS);
+        UI.displaySystemMessage(UIEnum.RETURN_SUCCESS);
         assertEquals("Thank you for returning the book.\n", outContent.toString());
     }
 
     @Test
     public void itShouldDisplayACheckoutSuccessMessage() {
-        UI.displayMessage(UIEnum.CHECKOUT_SUCCESS);
+        UI.displaySystemMessage(UIEnum.CHECKOUT_SUCCESS);
         assertEquals("Thank you! Enjoy the book.\n", outContent.toString());
     }
 
+    @Test
+    public void displayMessageShouldDisplayObjAsString() {
+        UI.displayMessage("Testing Testing 123");
+        assertEquals("Testing Testing 123\n", outContent.toString());
+    }
 }
