@@ -1,4 +1,6 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.object;
+
+import com.twu.biblioteca.store.BookStore;
 
 import java.util.Arrays;
 

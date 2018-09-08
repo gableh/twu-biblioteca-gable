@@ -1,4 +1,6 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.store;
+
+import com.twu.biblioteca.object.Book;
 
 public class BookStore {
     public Book[] get() {

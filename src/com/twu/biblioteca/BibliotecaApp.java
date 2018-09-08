@@ -1,5 +1,11 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.object.Book;
+import com.twu.biblioteca.object.Library;
+import com.twu.biblioteca.store.BookStore;
+import com.twu.biblioteca.ui.UI;
+import com.twu.biblioteca.ui.UIEnum;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;

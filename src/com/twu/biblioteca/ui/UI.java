@@ -1,7 +1,9 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.ui;
 
-class UI {
-    static void displaySystemMessage(UIEnum msg) {
+import com.twu.biblioteca.object.Book;
+
+public class UI {
+    public static void displaySystemMessage(UIEnum msg) {
         switch (msg) {
             case WELCOME_MESSAGE:
                 System.out.println("Welcome!");
@@ -32,7 +34,7 @@ class UI {
         }
     }
 
-    static void displayBooks(Book[] books) {
+    public static void displayBooks(Book[] books) {
         System.out.println("List of Available Books:");
         System.out.println("------------------------");
         for (int i = 0; i < books.length; i++) {

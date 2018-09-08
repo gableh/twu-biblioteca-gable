@@ -2,6 +2,9 @@ package com.twu.biblioteca;
 
 import static org.junit.Assert.assertEquals;
 
+import com.twu.biblioteca.object.Book;
+import com.twu.biblioteca.object.Library;
+import com.twu.biblioteca.store.BookStore;
 import org.junit.Test;
 
 public class LibraryTest {

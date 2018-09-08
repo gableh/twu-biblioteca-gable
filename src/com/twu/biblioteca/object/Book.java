@@ -1,4 +1,4 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.object;
 
 public class Book {
     private String authorName;
@@ -6,14 +6,14 @@ public class Book {
     private String title;
     private Boolean isCheckedOut;
 
-    Book(String title, String author_name, int year_published) {
+    public Book(String title, String author_name, int year_published) {
         this.title = title;
         this.authorName = author_name;
         this.yearPublished = year_published;
         this.isCheckedOut = false;
     }
 
-    static boolean checkout(Book book) {
+    public static boolean checkout(Book book) {
         if(!book.isCheckedOut) {
             book.isCheckedOut = true;
             return true;
@@ -21,7 +21,7 @@ public class Book {
         return false;
     }
 
-    static boolean returnBook(Book book) {
+    public static boolean returnBook(Book book) {
         if(book.isCheckedOut) {
             book.isCheckedOut = false;
             return true;
@@ -30,19 +30,19 @@ public class Book {
     }
 
 
-    int getYearPublished() {
+    public int getYearPublished() {
         return yearPublished;
     }
 
-    String getAuthorName() {
+    public String getAuthorName() {
         return authorName;
     }
 
-    Boolean getCheckedOut() {
+    public Boolean getCheckedOut() {
         return isCheckedOut;
     }
 
-    String getTitle() { return title; }
+    public String getTitle() { return title; }
 
     @Override
     public boolean equals(Object obj) {

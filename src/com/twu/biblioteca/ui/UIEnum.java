@@ -1,4 +1,4 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.ui;
 
 public enum UIEnum {
     WELCOME_MESSAGE, OPTION_LIST, OPTION_INVALID,
