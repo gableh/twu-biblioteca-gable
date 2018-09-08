@@ -8,6 +8,8 @@ public class UI {
                 break;
             case OPTION_LIST:
                 System.out.println("List of available options.");
+                System.out.println("1. List Books");
+                System.out.println("2. Quit");
                 break;
             case OPTION_INVALID:
                 System.out.println("Select a valid option!");

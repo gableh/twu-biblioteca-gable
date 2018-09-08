@@ -37,7 +37,7 @@ public class UITest {
     @Test
     public void itShouldDisplayAnOptionListMessage() {
         UI.displayMessage(UIEnum.OPTION_LIST);
-        assertEquals("List of available options.\n", outContent.toString());
+        assertEquals("List of available options.\nList Books\nQuit\n", outContent.toString());
     }
 
     @Test
