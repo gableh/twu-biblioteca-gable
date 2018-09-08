@@ -1,24 +1,41 @@
 package com.twu.biblioteca;
 
 public class Book {
-    private String author_name;
-    private int year_published;
+    private String authorName;
+    private int yearPublished;
     private String title;
     private Boolean isCheckedOut;
 
     Book(String title, String author_name, int year_published) {
         this.title = title;
-        this.author_name = author_name;
-        this.year_published = year_published;
+        this.authorName = author_name;
+        this.yearPublished = year_published;
         this.isCheckedOut = false;
     }
 
+    static boolean checkout(Book book) {
+        if(!book.isCheckedOut) {
+            book.isCheckedOut = true;
+            return true;
+        }
+        return false;
+    }
+
+    static boolean returnBook(Book book) {
+        if(book.isCheckedOut) {
+            book.isCheckedOut = false;
+            return true;
+        }
+        return false;
+    }
+
+
     int getYearPublished() {
-        return year_published;
+        return yearPublished;
     }
 
     String getAuthorName() {
-        return author_name;
+        return authorName;
     }
 
     Boolean getCheckedOut() {
@@ -26,22 +43,6 @@ public class Book {
     }
 
     String getTitle() { return title; }
-
-    boolean checkout() {
-        if(!this.isCheckedOut) {
-            this.isCheckedOut = true;
-            return true;
-        }
-        return false;
-    }
-
-    boolean returnBook() {
-        if(this.isCheckedOut) {
-            this.isCheckedOut = false;
-            return true;
-        }
-        return false;
-    }
 
     @Override
     public boolean equals(Object obj) {
@@ -53,9 +54,9 @@ public class Book {
         }
         final Book other = (Book) obj;
 
-        boolean hasSameAuthor = this.author_name.equals(other.author_name);
+        boolean hasSameAuthor = this.authorName.equals(other.authorName);
         boolean hasSameTitle = this.title.equals(other.title);
-        boolean hasSameYearPublished = this.year_published == other.year_published;
+        boolean hasSameYearPublished = this.yearPublished == other.yearPublished;
 
         return hasSameAuthor && hasSameTitle && hasSameYearPublished;
     }
@@ -63,7 +64,7 @@ public class Book {
     @Override
     public String toString() {
         return "Title: " + title +
-                ", Author: " + author_name +
-                ", Year Published: " + year_published;
+                ", Author: " + authorName +
+                ", Year Published: " + yearPublished;
     }
 }

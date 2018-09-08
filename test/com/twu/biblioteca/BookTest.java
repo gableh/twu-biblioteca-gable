@@ -59,34 +59,34 @@ public class BookTest {
     public void itShouldbeAbleToCheckoutAndReturnABook() {
         Book book2 = new Book("book2", "author", 1993);
         assertEquals(false, book2.getCheckedOut());
-        book2.checkout();
+        Book.checkout(book2);
         assertEquals(true, book2.getCheckedOut());
-        book2.returnBook();
+        Book.returnBook(book2);
         assertEquals(false, book2.getCheckedOut());
     }
 
     @Test
     public void itShouldReturnTrueIfCheckoutSuccess() {
         Book book2 = new Book("book2", "author", 1993);
-        assertEquals(true, book2.checkout());
+        assertEquals(true, Book.checkout(book2));
     }
     @Test
     public void itShouldReturnFalseIfCheckoutFailed() {
         Book book2 = new Book("book2", "author", 1993);
-        book2.checkout();
-        assertEquals(false, book2.checkout());
+        Book.checkout(book2);
+        assertEquals(false, Book.checkout(book2));
     }
 
     @Test
     public void itShouldReturnTrueIfReturnFailed() {
         Book book2 = new Book("book2", "author", 1993);
-        assertEquals(false, book2.returnBook());
+        assertEquals(false, Book.returnBook(book2));
     }
     @Test
     public void itShouldReturnFalseIfReturnSuccess() {
         Book book2 = new Book("book2", "author", 1993);
-        book2.checkout();
-        assertEquals(true, book2.returnBook());
+        Book.checkout(book2);
+        assertEquals(true, Book.returnBook(book2));
     }
 
 }

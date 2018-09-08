@@ -3,6 +3,7 @@ package com.twu.biblioteca;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.function.Function;
 
 public class BibliotecaApp {
 
@@ -30,24 +31,24 @@ public class BibliotecaApp {
             } else if (userInput.equals("return book")) {
                 bookTitle = "t1";
                 Book[] books = library.findBooksByTitle(bookTitle);
-                alterBook(books, UIEnum.RETURN_FAIL, UIEnum.RETURN_SUCCESS);
+                alterBook(books, UIEnum.RETURN_FAIL, UIEnum.RETURN_SUCCESS, Book::returnBook);
             } else if (userInput.equals("checkout book")) {
                 bookTitle = "t1";
                 Book[] books = library.findBooksByTitle(bookTitle);
-                alterBook(books, UIEnum.CHECKOUT_FAIL, UIEnum.CHECKOUT_SUCCESS);
+                alterBook(books, UIEnum.CHECKOUT_FAIL, UIEnum.CHECKOUT_SUCCESS, Book::checkout);
             } else {
                 UI.displaySystemMessage(UIEnum.OPTION_INVALID);
             }
         }
     }
 
-    private void alterBook(Book[] books, UIEnum returnFail, UIEnum returnSuccess) {
+    private void alterBook(Book[] books, UIEnum Fail, UIEnum Success, Function<Book, Boolean> alter) {
         if (books.length > 1) {
             // Display multiple books found, possible filtering by author
         } else if (books.length == 0) {
-            UI.displaySystemMessage(returnFail);
+            UI.displaySystemMessage(Fail);
         } else {
-            UI.displaySystemMessage(books[0].returnBook() ? returnSuccess : returnFail);
+            UI.displaySystemMessage(alter.apply(books[0]) ? Success : Fail);
         }
     }
 }
