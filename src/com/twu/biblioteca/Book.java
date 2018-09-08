@@ -35,4 +35,11 @@ public class Book {
 
         return hasSameAuthor && hasSameTitle && hasSameYearPublished;
     }
+
+    @Override
+    public String toString() {
+        return "Title: " + title +
+                ", Author: " + author_name +
+                ", Year Published: " + year_published;
+    }
 }
