@@ -27,8 +27,12 @@ public class Book {
 
     String getTitle() { return title; }
 
-    void setCheckedOut(Boolean checkedOut) {
-        isCheckedOut = checkedOut;
+    void checkout() {
+        this.isCheckedOut = true;
+    }
+
+    void returnBook() {
+        this.isCheckedOut = false;
     }
 
     @Override

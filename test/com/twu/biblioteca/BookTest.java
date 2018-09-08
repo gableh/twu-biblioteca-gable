@@ -55,4 +55,13 @@ public class BookTest {
         assertEquals("Title: book2, Author: author, Year Published: 1993", book1.toString());
     }
 
+    @Test
+    public void itShouldbeAbleToCheckoutAndReturnABook() {
+        Book book2 = new Book("book2", "author", 1993);
+        assertEquals(false, book2.getCheckedOut());
+        book2.checkout();
+        assertEquals(true, book2.getCheckedOut());
+        book2.returnBook();
+        assertEquals(false, book2.getCheckedOut());
+    }
 }
