@@ -20,22 +20,28 @@ public class BibliotecaApp {
         UI.displaySystemMessage(UIEnum.WELCOME_MESSAGE);
 
         while (hasNotQuit) {
+
             UI.displaySystemMessage(UIEnum.OPTION_LIST);
             UI.displaySystemMessage(UIEnum.USER_INPUT);
             userInput = br.readLine();
+
             if (userInput.equals(OptionListEnum.LISTBOOK.getValue())) {
                 Book[] books = library.getAvailableBooks();
                 UI.displayBooks(books);
+
             } else if (userInput.equals(OptionListEnum.QUIT.getValue())) {
                 hasNotQuit = false;
+
             } else if (userInput.equals("return book")) {
                 bookTitle = "t1";
                 Book[] books = library.findBooksByTitle(bookTitle);
                 alterBook(books, UIEnum.RETURN_FAIL, UIEnum.RETURN_SUCCESS, Book::returnBook);
+
             } else if (userInput.equals("checkout book")) {
                 bookTitle = "t1";
                 Book[] books = library.findBooksByTitle(bookTitle);
                 alterBook(books, UIEnum.CHECKOUT_FAIL, UIEnum.CHECKOUT_SUCCESS, Book::checkout);
+
             } else {
                 UI.displaySystemMessage(UIEnum.OPTION_INVALID);
             }
