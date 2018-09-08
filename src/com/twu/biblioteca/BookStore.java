@@ -1,10 +1,7 @@
 package com.twu.biblioteca;
 
 public class BookStore {
-
-
-
-    public static Book[] get() {
+    public Book[] get() {
         Book b1 = new Book("t1", "a1", 1993);
         Book b2 = new Book("t2", "a2", 1994);
         Book b3 = new Book("t3", "a3", 1995);
