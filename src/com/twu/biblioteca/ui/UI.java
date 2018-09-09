@@ -1,5 +1,6 @@
 package com.twu.biblioteca.ui;
 
+import com.twu.biblioteca.LibraryItem;
 import com.twu.biblioteca.object.Book;
 
 public class UI {
@@ -10,10 +11,11 @@ public class UI {
                 break;
             case OPTION_LIST:
                 System.out.println("List of available options.");
-                System.out.println("1. List Books");
-                System.out.println("2. Checkout Book");
-                System.out.println("3. Return Book");
-                System.out.println("4. Quit");
+                System.out.println("- List Books");
+                System.out.println("- List Movies");
+                System.out.println("- Checkout Book");
+                System.out.println("- Return Book");
+                System.out.println("- Quit");
                 break;
             case OPTION_INVALID:
                 System.out.println("Select a valid option!");
@@ -39,11 +41,11 @@ public class UI {
         }
     }
 
-    public static void displayBooks(Object[] books) {
-        System.out.println("List of Available Books:");
+    public static void displayItems(LibraryItem[] items) {
+        System.out.println("Currently available for checkout:");
         System.out.println("------------------------");
-        for (int i = 0; i < books.length; i++) {
-            System.out.println(books[i]);
+        for (int i = 0; i < items.length; i++) {
+            System.out.println(items[i]);
         }
         System.out.println("------------------------");
     }

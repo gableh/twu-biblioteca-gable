@@ -1,8 +1,10 @@
 package com.twu.biblioteca;
 
 import com.twu.biblioteca.object.Book;
+import com.twu.biblioteca.object.Movie;
 import com.twu.biblioteca.object.Library;
 import com.twu.biblioteca.store.BookStore;
+import com.twu.biblioteca.store.MovieStore;
 import com.twu.biblioteca.ui.UI;
 import com.twu.biblioteca.ui.UIEnum;
 
@@ -21,8 +23,9 @@ public class BibliotecaApp {
     public void run() throws IOException {
         br = new BufferedReader(new InputStreamReader(System.in));
 
-        BookStore bookstore = new BookStore();
-        Library library = new Library(bookstore);
+        BookStore bookStore = new BookStore();
+        MovieStore movieStore = new MovieStore();
+        Library library = new Library(bookStore, movieStore);
 
         UI.displaySystemMessage(UIEnum.WELCOME_MESSAGE);
 
@@ -34,10 +37,11 @@ public class BibliotecaApp {
 
             if (userInput.equalsIgnoreCase(OptionListEnum.LISTBOOK.getValue())) {
                 Book[] books = library.getAvailableBooks();
-                UI.displayBooks(books);
+                UI.displayItems(books);
 
-            } else if (userInput.equalsIgnoreCase(OptionListEnum.QUIT.getValue())) {
-                hasNotQuit = false;
+            } else if (userInput.equalsIgnoreCase(OptionListEnum.LISTMOVIE.getValue())) {
+                Movie[] movies = library.getAvailableMovies();
+                UI.displayItems(movies);
 
             } else if (userInput.equalsIgnoreCase(OptionListEnum.RETURNBOOK.getValue())) {
                 LibraryItem[] books = requestBook(library);
@@ -46,6 +50,9 @@ public class BibliotecaApp {
             } else if (userInput.equalsIgnoreCase(OptionListEnum.CHECKOUTBOOK.getValue())) {
                 LibraryItem[] books = requestBook(library);
                 alterItem(books, UIEnum.CHECKOUT_FAIL, UIEnum.CHECKOUT_SUCCESS, LibraryItem::checkoutItem);
+
+            } else if (userInput.equalsIgnoreCase(OptionListEnum.QUIT.getValue())) {
+                hasNotQuit = false;
 
             } else {
                 UI.displaySystemMessage(UIEnum.OPTION_INVALID);
@@ -59,13 +66,13 @@ public class BibliotecaApp {
         return library.findBooksByTitle(bookTitle);
     }
 
-    private void alterItem(LibraryItem[] items, UIEnum Fail, UIEnum Success, Function<LibraryItem, Boolean> alter) {
+    private void alterItem(LibraryItem[] items, UIEnum fail, UIEnum success, Function<LibraryItem, Boolean> alter) {
         if (items.length > 1) {
-            // Display multiple items found, possible filtering by author
+            // Display multiple items found, possible additional filtering by author
         } else if (items.length == 0) {
-            UI.displaySystemMessage(Fail);
+            UI.displaySystemMessage(fail);
         } else {
-            UI.displaySystemMessage(alter.apply(items[0]) ? Success : Fail);
+            UI.displaySystemMessage(alter.apply(items[0]) ? success : fail);
         }
     }
 }

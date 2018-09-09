@@ -17,6 +17,10 @@ public class Movie implements LibraryItem {
         this.isCheckedOut = false;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
     public int getYearReleased() {
         return yearReleased;
     }

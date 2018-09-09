@@ -41,10 +41,11 @@ public class UITest {
     public void itShouldDisplayAnOptionListMessage() {
         UI.displaySystemMessage(UIEnum.OPTION_LIST);
         assertEquals("List of available options.\n" +
-                "1. List Books\n" +
-                "2. Checkout Book\n" +
-                "3. Return Book\n" +
-                "4. Quit\n", outContent.toString());
+                "- List Books\n" +
+                "- List Movies\n" +
+                "- Checkout Book\n" +
+                "- Return Book\n" +
+                "- Quit\n", outContent.toString());
     }
 
     @Test
@@ -85,15 +86,15 @@ public class UITest {
 
 
     @Test
-    public void displayMessageShouldDisplayObjAsString() {
-        Book book1 = new Book("book2", "author", 1993);
-        Book book2 = new Book("book2", "author", 1993);
-        Book book3 = new Book("book3", "author", 1993);
+    public void displayMessageShouldDisplayLibraryItemsAsString() {
+        LibraryItem book1 = new Book("book2", "author", 1993);
+        LibraryItem book2 = new Book("book2", "author", 1993);
+        LibraryItem book3 = new Book("book3", "author", 1993);
 
-        Book[] books = {book1, book2, book3};
+        LibraryItem[] items = {book1, book2, book3};
 
-        UI.displayBooks(books);
-        assertEquals("List of Available Books:\n" +
+        UI.displayItems(items);
+        assertEquals("Currently available for checkout:\n" +
                 "------------------------\n" +
                 "Title: book2, Author: author, Year Published: 1993\n" +
                 "Title: book2, Author: author, Year Published: 1993\n" +
