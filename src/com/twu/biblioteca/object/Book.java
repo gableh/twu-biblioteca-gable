@@ -1,6 +1,8 @@
 package com.twu.biblioteca.object;
 
-public class Book {
+import com.twu.biblioteca.LibraryItem;
+
+public class Book implements LibraryItem {
     private String authorName;
     private int yearPublished;
     private String title;
@@ -38,8 +40,12 @@ public class Book {
         return authorName;
     }
 
-    public Boolean getCheckedOut() {
+    public boolean getCheckedOut() {
         return isCheckedOut;
+    }
+
+    public void setCheckedOut(boolean checkedOut) {
+        isCheckedOut = checkedOut;
     }
 
     public String getTitle() { return title; }

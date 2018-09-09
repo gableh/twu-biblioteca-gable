@@ -39,7 +39,7 @@ public class UI {
         }
     }
 
-    public static void displayBooks(Book[] books) {
+    public static void displayBooks(Object[] books) {
         System.out.println("List of Available Books:");
         System.out.println("------------------------");
         for (int i = 0; i < books.length; i++) {

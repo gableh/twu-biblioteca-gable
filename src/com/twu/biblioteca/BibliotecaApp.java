@@ -40,12 +40,12 @@ public class BibliotecaApp {
                 hasNotQuit = false;
 
             } else if (userInput.equalsIgnoreCase(OptionListEnum.RETURNBOOK.getValue())) {
-                Book[] books = requestTitle(library);
-                alterBook(books, UIEnum.RETURN_FAIL, UIEnum.RETURN_SUCCESS, Book::returnBook);
+                LibraryItem[] books = requestBook(library);
+                alterItem(books, UIEnum.RETURN_FAIL, UIEnum.RETURN_SUCCESS, LibraryItem::returnItem);
 
             } else if (userInput.equalsIgnoreCase(OptionListEnum.CHECKOUTBOOK.getValue())) {
-                Book[] books = requestTitle(library);
-                alterBook(books, UIEnum.CHECKOUT_FAIL, UIEnum.CHECKOUT_SUCCESS, Book::checkout);
+                LibraryItem[] books = requestBook(library);
+                alterItem(books, UIEnum.CHECKOUT_FAIL, UIEnum.CHECKOUT_SUCCESS, LibraryItem::checkoutItem);
 
             } else {
                 UI.displaySystemMessage(UIEnum.OPTION_INVALID);
@@ -53,19 +53,19 @@ public class BibliotecaApp {
         }
     }
 
-    private Book[] requestTitle(Library library) throws IOException {
+    private Book[] requestBook(Library library) throws IOException {
         UI.displaySystemMessage(UIEnum.USER_INPUT_BOOK);
         bookTitle = br.readLine();
         return library.findBooksByTitle(bookTitle);
     }
 
-    private void alterBook(Book[] books, UIEnum Fail, UIEnum Success, Function<Book, Boolean> alter) {
-        if (books.length > 1) {
-            // Display multiple books found, possible filtering by author
-        } else if (books.length == 0) {
+    private void alterItem(LibraryItem[] items, UIEnum Fail, UIEnum Success, Function<LibraryItem, Boolean> alter) {
+        if (items.length > 1) {
+            // Display multiple items found, possible filtering by author
+        } else if (items.length == 0) {
             UI.displaySystemMessage(Fail);
         } else {
-            UI.displaySystemMessage(alter.apply(books[0]) ? Success : Fail);
+            UI.displaySystemMessage(alter.apply(items[0]) ? Success : Fail);
         }
     }
 }
