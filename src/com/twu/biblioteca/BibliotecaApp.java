@@ -18,6 +18,7 @@ public class BibliotecaApp {
     private static boolean hasNotQuit = true;
     private String userInput;
     private String bookTitle;
+    private String movieTitle;
     private BufferedReader br;
 
     public void run() throws IOException {
@@ -51,6 +52,14 @@ public class BibliotecaApp {
                 LibraryItem[] books = requestBook(library);
                 alterItem(books, UIEnum.CHECKOUT_FAIL, UIEnum.CHECKOUT_SUCCESS, LibraryItem::checkoutItem);
 
+            } else if (userInput.equalsIgnoreCase(OptionListEnum.RETURNMOVIE.getValue())) {
+                LibraryItem[] movies = requestMovie(library);
+                alterItem(movies, UIEnum.RETURN_FAIL, UIEnum.RETURN_SUCCESS, LibraryItem::returnItem);
+
+            } else if (userInput.equalsIgnoreCase(OptionListEnum.CHECKOUTMOVIE.getValue())) {
+                LibraryItem[] movies = requestMovie(library);
+                alterItem(movies, UIEnum.CHECKOUT_FAIL, UIEnum.CHECKOUT_SUCCESS, LibraryItem::checkoutItem);
+
             } else if (userInput.equalsIgnoreCase(OptionListEnum.QUIT.getValue())) {
                 hasNotQuit = false;
 
@@ -64,6 +73,12 @@ public class BibliotecaApp {
         UI.displaySystemMessage(UIEnum.USER_INPUT_BOOK);
         bookTitle = br.readLine();
         return library.findBooksByTitle(bookTitle);
+    }
+
+    private Movie[] requestMovie(Library library) throws IOException {
+        UI.displaySystemMessage(UIEnum.USER_INPUT_BOOK);
+        movieTitle = br.readLine();
+        return library.findMoviesByTitle(movieTitle);
     }
 
     private void alterItem(LibraryItem[] items, UIEnum fail, UIEnum success, Function<LibraryItem, Boolean> alter) {

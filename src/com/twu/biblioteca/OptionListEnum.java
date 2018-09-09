@@ -5,7 +5,9 @@ public enum OptionListEnum {
     LISTBOOK("List Books"),
     LISTMOVIE("List Movies"),
     CHECKOUTBOOK("Checkout Book"),
-    RETURNBOOK("Return Book");
+    RETURNBOOK("Return Book"),
+    CHECKOUTMOVIE("Checkout Movie"),
+    RETURNMOVIE("Return Movie");
 
     private final String value;
 
