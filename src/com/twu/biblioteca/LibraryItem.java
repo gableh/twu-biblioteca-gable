@@ -1,7 +1,6 @@
 package com.twu.biblioteca;
 
 public interface LibraryItem {
-
     static boolean checkoutItem(LibraryItem item) {
         if (!item.getCheckedOut()) {
             item.setCheckedOut(true);
@@ -18,8 +17,12 @@ public interface LibraryItem {
         return false;
     }
 
+    public LibraryItemTypes getItemType();
+
     boolean getCheckedOut();
     void setCheckedOut(boolean bool);
+
+    String getTitle();
 
     @Override
     boolean equals(Object obj);

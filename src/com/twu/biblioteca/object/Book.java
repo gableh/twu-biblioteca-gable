@@ -1,39 +1,29 @@
 package com.twu.biblioteca.object;
 
 import com.twu.biblioteca.LibraryItem;
+import com.twu.biblioteca.LibraryItemTypes;
 
 public class Book implements LibraryItem {
     private String authorName;
     private int yearPublished;
     private String title;
     private Boolean isCheckedOut;
+    private LibraryItemTypes type;
 
     public Book(String title, String author_name, int year_published) {
         this.title = title;
         this.authorName = author_name;
         this.yearPublished = year_published;
         this.isCheckedOut = false;
+        this.type = LibraryItemTypes.BOOK;
     }
-
-    public static boolean checkout(Book book) {
-        if(!book.isCheckedOut) {
-            book.isCheckedOut = true;
-            return true;
-        }
-        return false;
-    }
-
-    public static boolean returnBook(Book book) {
-        if(book.isCheckedOut) {
-            book.isCheckedOut = false;
-            return true;
-        }
-        return false;
-    }
-
 
     public int getYearPublished() {
         return yearPublished;
+    }
+
+    public LibraryItemTypes getItemType() {
+        return type;
     }
 
     public String getAuthorName() {

@@ -44,7 +44,9 @@ public class UITest {
                 "- List Books\n" +
                 "- List Movies\n" +
                 "- Checkout Book\n" +
+                "- Checkout Movie\n" +
                 "- Return Book\n" +
+                "- Return Movie\n" +
                 "- Quit\n", outContent.toString());
     }
 
@@ -56,25 +58,25 @@ public class UITest {
 
     @Test
     public void itShouldDisplayAReturnFailMessage() {
-        UI.displaySystemMessage(UIEnum.RETURN_FAIL);
+        UI.displaySystemMessage(UIEnum.RETURN_FAIL, LibraryItemTypes.BOOK.getValue());
         assertEquals("That is not a valid book to return.\n", outContent.toString());
     }
 
     @Test
     public void itShouldDisplayACheckoutFailMessage() {
-        UI.displaySystemMessage(UIEnum.CHECKOUT_FAIL);
+        UI.displaySystemMessage(UIEnum.CHECKOUT_FAIL, LibraryItemTypes.BOOK.getValue());
         assertEquals("That book is not available.\n", outContent.toString());
     }
 
     @Test
     public void itShouldDisplayAReturnSuccessMessage() {
-        UI.displaySystemMessage(UIEnum.RETURN_SUCCESS);
+        UI.displaySystemMessage(UIEnum.RETURN_SUCCESS, LibraryItemTypes.BOOK.getValue());
         assertEquals("Thank you for returning the book.\n", outContent.toString());
     }
 
     @Test
     public void itShouldDisplayACheckoutSuccessMessage() {
-        UI.displaySystemMessage(UIEnum.CHECKOUT_SUCCESS);
+        UI.displaySystemMessage(UIEnum.CHECKOUT_SUCCESS, LibraryItemTypes.BOOK.getValue());
         assertEquals("Thank you! Enjoy the book.\n", outContent.toString());
     }
 
@@ -99,6 +101,6 @@ public class UITest {
                 "Title: book2, Author: author, Year Published: 1993\n" +
                 "Title: book2, Author: author, Year Published: 1993\n" +
                 "Title: book3, Author: author, Year Published: 1993\n" +
-                "------------------------\n" , outContent.toString());
+                "------------------------\n", outContent.toString());
     }
 }

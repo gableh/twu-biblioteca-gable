@@ -1,10 +1,9 @@
 package com.twu.biblioteca.ui;
 
 import com.twu.biblioteca.LibraryItem;
-import com.twu.biblioteca.object.Book;
 
 public class UI {
-    public static void displaySystemMessage(UIEnum msg) {
+    public static void displaySystemMessage(UIEnum msg, String ...varArgs) {
         switch (msg) {
             case WELCOME_MESSAGE:
                 System.out.println("Welcome!");
@@ -14,29 +13,31 @@ public class UI {
                 System.out.println("- List Books");
                 System.out.println("- List Movies");
                 System.out.println("- Checkout Book");
+                System.out.println("- Checkout Movie");
                 System.out.println("- Return Book");
+                System.out.println("- Return Movie");
                 System.out.println("- Quit");
                 break;
             case OPTION_INVALID:
                 System.out.println("Select a valid option!");
                 break;
             case RETURN_FAIL:
-                System.out.println("That is not a valid book to return.");
+                System.out.println("That is not a valid "+ varArgs[0] + " to return.");
                 break;
             case CHECKOUT_FAIL:
-                System.out.println("That book is not available.");
+                System.out.println("That "+ varArgs[0] +" is not available.");
                 break;
             case RETURN_SUCCESS:
-                System.out.println("Thank you for returning the book.");
+                System.out.println("Thank you for returning the "+ varArgs[0] +".");
                 break;
             case CHECKOUT_SUCCESS:
-                System.out.println("Thank you! Enjoy the book.");
+                System.out.println("Thank you! Enjoy the "+ varArgs[0] +".");
                 break;
             case USER_INPUT:
                 System.out.println("What would you like to do?");
                 break;
-            case USER_INPUT_BOOK:
-                System.out.println("Please enter a book title.");
+            case USER_INPUT_ITEM:
+                System.out.println("Please enter a "+ varArgs[0] +" title.");
                 break;
         }
     }

@@ -1,6 +1,7 @@
 package com.twu.biblioteca.object;
 
 import com.twu.biblioteca.LibraryItem;
+import com.twu.biblioteca.LibraryItemTypes;
 
 public class Movie implements LibraryItem {
     private String directorName;
@@ -9,12 +10,20 @@ public class Movie implements LibraryItem {
     private Boolean isCheckedOut;
     private int rating;
 
+    private LibraryItemTypes type;
+
     public Movie(String title, String directorName, int yearReleased, int rating) {
         this.title = title;
         this.directorName = directorName;
         this.yearReleased = yearReleased;
         this.rating = rating;
         this.isCheckedOut = false;
+        this.type = LibraryItemTypes.MOVIE;
+
+    }
+
+    public LibraryItemTypes getItemType() {
+        return type;
     }
 
     public String getTitle() {

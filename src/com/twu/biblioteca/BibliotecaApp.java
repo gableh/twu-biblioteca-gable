@@ -37,28 +37,28 @@ public class BibliotecaApp {
             userInput = br.readLine();
 
             if (userInput.equalsIgnoreCase(OptionListEnum.LISTBOOK.getValue())) {
-                Book[] books = library.getAvailableBooks();
+                LibraryItem[] books = library.getAvailableItems(LibraryItemTypes.BOOK);
                 UI.displayItems(books);
 
             } else if (userInput.equalsIgnoreCase(OptionListEnum.LISTMOVIE.getValue())) {
-                Movie[] movies = library.getAvailableMovies();
+                LibraryItem[] movies = library.getAvailableItems(LibraryItemTypes.MOVIE);
                 UI.displayItems(movies);
 
             } else if (userInput.equalsIgnoreCase(OptionListEnum.RETURNBOOK.getValue())) {
-                LibraryItem[] books = requestBook(library);
-                alterItem(books, UIEnum.RETURN_FAIL, UIEnum.RETURN_SUCCESS, LibraryItem::returnItem);
+                LibraryItem[] books = requestItem(library, LibraryItemTypes.BOOK);
+                alterItem(books, UIEnum.RETURN_FAIL, UIEnum.RETURN_SUCCESS, LibraryItem::returnItem, LibraryItemTypes.BOOK);
 
             } else if (userInput.equalsIgnoreCase(OptionListEnum.CHECKOUTBOOK.getValue())) {
-                LibraryItem[] books = requestBook(library);
-                alterItem(books, UIEnum.CHECKOUT_FAIL, UIEnum.CHECKOUT_SUCCESS, LibraryItem::checkoutItem);
+                LibraryItem[] books = requestItem(library, LibraryItemTypes.BOOK);
+                alterItem(books, UIEnum.CHECKOUT_FAIL, UIEnum.CHECKOUT_SUCCESS, LibraryItem::checkoutItem, LibraryItemTypes.BOOK);
 
             } else if (userInput.equalsIgnoreCase(OptionListEnum.RETURNMOVIE.getValue())) {
-                LibraryItem[] movies = requestMovie(library);
-                alterItem(movies, UIEnum.RETURN_FAIL, UIEnum.RETURN_SUCCESS, LibraryItem::returnItem);
+                LibraryItem[] movies = requestItem(library, LibraryItemTypes.MOVIE);
+                alterItem(movies, UIEnum.RETURN_FAIL, UIEnum.RETURN_SUCCESS, LibraryItem::returnItem, LibraryItemTypes.MOVIE);
 
             } else if (userInput.equalsIgnoreCase(OptionListEnum.CHECKOUTMOVIE.getValue())) {
-                LibraryItem[] movies = requestMovie(library);
-                alterItem(movies, UIEnum.CHECKOUT_FAIL, UIEnum.CHECKOUT_SUCCESS, LibraryItem::checkoutItem);
+                LibraryItem[] movies = requestItem(library, LibraryItemTypes.MOVIE);
+                alterItem(movies, UIEnum.CHECKOUT_FAIL, UIEnum.CHECKOUT_SUCCESS, LibraryItem::checkoutItem, LibraryItemTypes.MOVIE);
 
             } else if (userInput.equalsIgnoreCase(OptionListEnum.QUIT.getValue())) {
                 hasNotQuit = false;
@@ -69,25 +69,20 @@ public class BibliotecaApp {
         }
     }
 
-    private Book[] requestBook(Library library) throws IOException {
-        UI.displaySystemMessage(UIEnum.USER_INPUT_BOOK);
-        bookTitle = br.readLine();
-        return library.findBooksByTitle(bookTitle);
-    }
-
-    private Movie[] requestMovie(Library library) throws IOException {
-        UI.displaySystemMessage(UIEnum.USER_INPUT_BOOK);
+    private LibraryItem[] requestItem(Library library, LibraryItemTypes type) throws IOException {
+        UI.displaySystemMessage(UIEnum.USER_INPUT_ITEM, type.getValue());
         movieTitle = br.readLine();
-        return library.findMoviesByTitle(movieTitle);
+        return library.findItemByTitle(movieTitle, type);
     }
 
-    private void alterItem(LibraryItem[] items, UIEnum fail, UIEnum success, Function<LibraryItem, Boolean> alter) {
+    private void alterItem(LibraryItem[] items, UIEnum fail, UIEnum success,
+                           Function<LibraryItem, Boolean> alter, LibraryItemTypes type) {
         if (items.length > 1) {
             // Display multiple items found, possible additional filtering by author
         } else if (items.length == 0) {
-            UI.displaySystemMessage(fail);
+            UI.displaySystemMessage(fail, type.getValue());
         } else {
-            UI.displaySystemMessage(alter.apply(items[0]) ? success : fail);
+            UI.displaySystemMessage(alter.apply(items[0]) ? success : fail, type.getValue());
         }
     }
 }

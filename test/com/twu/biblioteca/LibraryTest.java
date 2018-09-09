@@ -21,13 +21,13 @@ public class LibraryTest {
     }
 
     @Test
-    public void getCollectionShouldReturnAllAvailableLibraryBooks() {
+    public void getCollectionShouldReturnAllAvailableLibraryItems() {
         Book b1 = new Book("t1", "a1", 1993);
         Book b2 = new Book("t2", "a2", 1994);
         Book b3 = new Book("t3", "a3", 1995);
         Book b4 = new Book("t4", "a4", 1996);
 
-        Book[] libraryBooks = library.getAvailableBooks();
+        LibraryItem[] libraryBooks = library.getAvailableItems(LibraryItemTypes.BOOK);
         assertEquals(libraryBooks[0], b1);
         assertEquals(libraryBooks[1], b2);
         assertEquals(libraryBooks[2], b3);
@@ -35,8 +35,8 @@ public class LibraryTest {
     }
 
     @Test
-    public void findBooksByTitleShouldReturnAllBooksWithTitle() {
-        Book[] books = library.findBooksByTitle("t1");
+    public void findItemByTitleShouldReturnAllItemsWithTitle() {
+        LibraryItem[] books = library.findItemByTitle("t1", LibraryItemTypes.BOOK);
 
         for (int i = 0; i < books.length; i++) {
             assertEquals("t1", books[i].getTitle());

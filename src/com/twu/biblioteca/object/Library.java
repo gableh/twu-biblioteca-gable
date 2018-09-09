@@ -1,5 +1,7 @@
 package com.twu.biblioteca.object;
 
+import com.twu.biblioteca.LibraryItem;
+import com.twu.biblioteca.LibraryItemTypes;
 import com.twu.biblioteca.store.BookStore;
 import com.twu.biblioteca.store.MovieStore;
 
@@ -9,22 +11,30 @@ public class Library {
 
     private Book[] bookCollection;
     private Movie[] movieCollection;
-
+    LibraryItem[] collection;
     public Library (BookStore bookstore, MovieStore movieStore) {
         this.bookCollection = bookstore.get();
         this.movieCollection = movieStore.get();
     }
 
-    public Book[] getAvailableBooks() {
-        return Arrays.stream(bookCollection).filter(x -> !x.getCheckedOut()).toArray(Book[]::new);
+    public LibraryItem[] getAvailableItems(LibraryItemTypes type) {
+        setCollectionByType(type);
+        return Arrays.stream(collection).filter(x -> !x.getCheckedOut()).toArray(LibraryItem[]::new);
     }
-    public Movie[] getAvailableMovies() {
-        return Arrays.stream(movieCollection).filter(x -> !x.getCheckedOut()).toArray(Movie[]::new);
+
+    public LibraryItem[] findItemByTitle(String title, LibraryItemTypes type){
+        setCollectionByType(type);
+        return Arrays.stream(collection).filter(x -> x.getTitle().equals(title)).toArray(LibraryItem[]::new);
     }
-    public Book[] findBooksByTitle(String bookTitle){
-        return Arrays.stream(bookCollection).filter(x -> x.getTitle().equals(bookTitle)).toArray(Book[]::new);
-    }
-    public Movie[] findMoviesByTitle(String movieTitle){
-        return Arrays.stream(movieCollection).filter(x -> x.getTitle().equals(movieTitle)).toArray(Movie[]::new);
+
+    private void setCollectionByType(LibraryItemTypes type) {
+        switch (type) {
+            case BOOK:
+                collection = bookCollection;
+                break;
+            case MOVIE:
+                collection = movieCollection;
+                break;
+        }
     }
 }
