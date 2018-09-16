@@ -1,6 +1,5 @@
 package com.twu.biblioteca.object;
 
-import com.twu.biblioteca.LibraryItem;
 import com.twu.biblioteca.constants.LibraryItemTypes;
 import com.twu.biblioteca.constants.UIEnum;
 import com.twu.biblioteca.ui.UI;

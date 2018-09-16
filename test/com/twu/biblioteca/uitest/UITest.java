@@ -1,5 +1,6 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.uitest;
 
+import com.twu.biblioteca.object.LibraryItem;
 import com.twu.biblioteca.constants.LibraryItemTypes;
 import com.twu.biblioteca.object.Book;
 import com.twu.biblioteca.ui.UI;

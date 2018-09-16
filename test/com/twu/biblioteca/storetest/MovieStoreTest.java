@@ -1,4 +1,4 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.storetest;
 
 import com.twu.biblioteca.object.Movie;
 import com.twu.biblioteca.store.MovieStore;

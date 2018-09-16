@@ -1,6 +1,5 @@
 package com.twu.biblioteca.object;
 
-import com.twu.biblioteca.LibraryItem;
 import com.twu.biblioteca.constants.LibraryItemTypes;
 
 public class Movie implements LibraryItem {

@@ -1,4 +1,4 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.constantstest;
 
 import com.twu.biblioteca.constants.OptionListEnum;
 import org.junit.After;
@@ -69,11 +69,13 @@ public class OptionListEnumTest {
         OptionListEnum e = OptionListEnum.parse("Quit");
         assertEquals(OptionListEnum.QUIT, e);
     }
+
     @Test
     public void itShouldParseCaseInsensitiveCommand() {
         OptionListEnum e = OptionListEnum.parse("rEtUrN mOvIe");
         assertEquals(OptionListEnum.RETURNMOVIE, e);
     }
+
     @Test
     public void itShouldCommandByIntegerOrder() {
         OptionListEnum e = OptionListEnum.parse("1");

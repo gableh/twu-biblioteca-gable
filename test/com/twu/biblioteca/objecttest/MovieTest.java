@@ -1,4 +1,4 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.objecttest;
 
 import com.twu.biblioteca.object.Movie;
 import org.junit.After;

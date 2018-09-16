@@ -1,4 +1,4 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.object;
 
 import com.twu.biblioteca.constants.LibraryItemTypes;
 
@@ -18,8 +18,6 @@ public interface LibraryItem {
         }
         return false;
     }
-
-    public LibraryItemTypes getItemType();
 
     boolean getCheckedOut();
 
