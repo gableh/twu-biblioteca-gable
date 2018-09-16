@@ -1,6 +1,7 @@
 package com.twu.biblioteca.ui;
 
 import com.twu.biblioteca.LibraryItem;
+import com.twu.biblioteca.constants.OptionListEnum;
 import com.twu.biblioteca.constants.UIEnum;
 
 public class UI {
@@ -11,13 +12,9 @@ public class UI {
                 break;
             case OPTION_LIST:
                 System.out.println("List of available options.");
-                System.out.println("- List Books");
-                System.out.println("- List Movies");
-                System.out.println("- Checkout Book");
-                System.out.println("- Checkout Movie");
-                System.out.println("- Return Book");
-                System.out.println("- Return Movie");
-                System.out.println("- Quit");
+                for(OptionListEnum e : OptionListEnum.values()){
+                    System.out.println(e.getOrdinal()+ ". "+ e.getValue());
+                }
                 break;
             case OPTION_INVALID:
                 System.out.println("Select a valid option!");

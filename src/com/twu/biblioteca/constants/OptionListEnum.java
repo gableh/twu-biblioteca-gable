@@ -1,13 +1,13 @@
 package com.twu.biblioteca.constants;
 
 public enum OptionListEnum {
-    QUIT("Quit", ControllerTypes.UI),
     LISTBOOK("List Books", ControllerTypes.LibraryItem, LibraryItemTypes.BOOK),
     LISTMOVIE("List Movies", ControllerTypes.LibraryItem, LibraryItemTypes.MOVIE),
     CHECKOUTBOOK("Checkout Book", ControllerTypes.LibraryItem, LibraryItemTypes.BOOK),
-    RETURNBOOK("Return Book", ControllerTypes.LibraryItem, LibraryItemTypes.BOOK),
     CHECKOUTMOVIE("Checkout Movie", ControllerTypes.LibraryItem, LibraryItemTypes.MOVIE),
-    RETURNMOVIE("Return Movie", ControllerTypes.LibraryItem, LibraryItemTypes.MOVIE);
+    RETURNBOOK("Return Book", ControllerTypes.LibraryItem, LibraryItemTypes.BOOK),
+    RETURNMOVIE("Return Movie", ControllerTypes.LibraryItem, LibraryItemTypes.MOVIE),
+    QUIT("Quit", ControllerTypes.UI);
 
     private final String value;
     private final LibraryItemTypes libraryItemType;
@@ -34,16 +34,30 @@ public enum OptionListEnum {
     }
 
     public static OptionListEnum parse(String input) {
-        for (OptionListEnum e : OptionListEnum.values()) {
-            if (input.equalsIgnoreCase(e.value)) {
-                return e;
+        try {
+            int parsedInt = Integer.parseInt(input);
+            for (OptionListEnum e : OptionListEnum.values()) {
+                if (e.getOrdinal() == parsedInt) {
+                    return e;
+                }
+            }
+        } catch (NumberFormatException exception){
+            for (OptionListEnum e : OptionListEnum.values()) {
+                if (input.equalsIgnoreCase(e.value)) {
+                    return e;
+                }
             }
         }
+
         return null;
     }
 
     public String getValue() {
         return value;
+    }
+
+    public int getOrdinal() {
+        return ordinal() + 1;
     }
 }
 

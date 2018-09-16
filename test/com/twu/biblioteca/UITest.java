@@ -42,13 +42,13 @@ public class UITest {
     public void itShouldDisplayAnOptionListMessage() {
         UI.displaySystemMessage(UIEnum.OPTION_LIST);
         assertEquals("List of available options.\n" +
-                "- List Books\n" +
-                "- List Movies\n" +
-                "- Checkout Book\n" +
-                "- Checkout Movie\n" +
-                "- Return Book\n" +
-                "- Return Movie\n" +
-                "- Quit\n", outContent.toString());
+                "1. List Books\n" +
+                "2. List Movies\n" +
+                "3. Checkout Book\n" +
+                "4. Checkout Movie\n" +
+                "5. Return Book\n" +
+                "6. Return Movie\n" +
+                "7. Quit\n", outContent.toString());
     }
 
     @Test
