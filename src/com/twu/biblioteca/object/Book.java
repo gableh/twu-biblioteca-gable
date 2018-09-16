@@ -1,7 +1,7 @@
 package com.twu.biblioteca.object;
 
 import com.twu.biblioteca.LibraryItem;
-import com.twu.biblioteca.LibraryItemTypes;
+import com.twu.biblioteca.constants.LibraryItemTypes;
 
 public class Book implements LibraryItem {
     private String authorName;
@@ -38,14 +38,16 @@ public class Book implements LibraryItem {
         isCheckedOut = checkedOut;
     }
 
-    public String getTitle() { return title; }
+    public String getTitle() {
+        return title;
+    }
 
     @Override
     public boolean equals(Object obj) {
         if (obj == null) {
             return false;
         }
-        if(this.getClass() != obj.getClass()) {
+        if (this.getClass() != obj.getClass()) {
             return false;
         }
         final Book other = (Book) obj;

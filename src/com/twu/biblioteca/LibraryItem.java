@@ -1,5 +1,7 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.constants.LibraryItemTypes;
+
 public interface LibraryItem {
     static boolean checkoutItem(LibraryItem item) {
         if (!item.getCheckedOut()) {
@@ -20,6 +22,7 @@ public interface LibraryItem {
     public LibraryItemTypes getItemType();
 
     boolean getCheckedOut();
+
     void setCheckedOut(boolean bool);
 
     String getTitle();

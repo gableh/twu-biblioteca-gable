@@ -1,7 +1,7 @@
 package com.twu.biblioteca.object;
 
 import com.twu.biblioteca.LibraryItem;
-import com.twu.biblioteca.LibraryItemTypes;
+import com.twu.biblioteca.constants.LibraryItemTypes;
 
 public class Movie implements LibraryItem {
     private String directorName;
@@ -51,7 +51,7 @@ public class Movie implements LibraryItem {
         if (obj == null) {
             return false;
         }
-        if(this.getClass() != obj.getClass()) {
+        if (this.getClass() != obj.getClass()) {
             return false;
         }
         final Movie other = (Movie) obj;

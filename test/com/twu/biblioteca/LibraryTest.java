@@ -1,23 +1,20 @@
 package com.twu.biblioteca;
 
-import static org.junit.Assert.assertEquals;
-
 import com.twu.biblioteca.object.Book;
 import com.twu.biblioteca.object.Library;
 import com.twu.biblioteca.store.BookStore;
-import com.twu.biblioteca.store.MovieStore;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
+
 public class LibraryTest {
     private BookStore bookStore;
-    private MovieStore movieStore;
     private Library library;
     @Before
     public void setup() {
         bookStore = new BookStore();
-        movieStore = new MovieStore();
-        library = new Library(bookStore, movieStore);
+        library = new Library(bookStore.get());
     }
 
     @Test
@@ -27,7 +24,7 @@ public class LibraryTest {
         Book b3 = new Book("t3", "a3", 1995);
         Book b4 = new Book("t4", "a4", 1996);
 
-        LibraryItem[] libraryBooks = library.getAvailableItems(LibraryItemTypes.BOOK);
+        LibraryItem[] libraryBooks = library.getAvailableItems();
         assertEquals(libraryBooks[0], b1);
         assertEquals(libraryBooks[1], b2);
         assertEquals(libraryBooks[2], b3);
@@ -36,7 +33,7 @@ public class LibraryTest {
 
     @Test
     public void findItemByTitleShouldReturnAllItemsWithTitle() {
-        LibraryItem[] books = library.findItemByTitle("t1", LibraryItemTypes.BOOK);
+        LibraryItem[] books = library.findItemByTitle("t1");
 
         for (int i = 0; i < books.length; i++) {
             assertEquals("t1", books[i].getTitle());

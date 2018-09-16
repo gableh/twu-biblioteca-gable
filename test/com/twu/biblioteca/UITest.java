@@ -1,8 +1,9 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.constants.LibraryItemTypes;
 import com.twu.biblioteca.object.Book;
 import com.twu.biblioteca.ui.UI;
-import com.twu.biblioteca.ui.UIEnum;
+import com.twu.biblioteca.constants.UIEnum;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

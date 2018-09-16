@@ -1,40 +1,41 @@
 package com.twu.biblioteca.object;
 
 import com.twu.biblioteca.LibraryItem;
-import com.twu.biblioteca.LibraryItemTypes;
-import com.twu.biblioteca.store.BookStore;
-import com.twu.biblioteca.store.MovieStore;
+import com.twu.biblioteca.constants.LibraryItemTypes;
+import com.twu.biblioteca.constants.UIEnum;
+import com.twu.biblioteca.ui.UI;
 
+import java.io.IOException;
 import java.util.Arrays;
+import java.util.function.Function;
 
 public class Library {
-
-    private Book[] bookCollection;
-    private Movie[] movieCollection;
     LibraryItem[] collection;
-    public Library (BookStore bookstore, MovieStore movieStore) {
-        this.bookCollection = bookstore.get();
-        this.movieCollection = movieStore.get();
+
+    public Library(LibraryItem[] items) {
+        this.collection = items;
     }
 
-    public LibraryItem[] getAvailableItems(LibraryItemTypes type) {
-        setCollectionByType(type);
+    public LibraryItem[] getAvailableItems() {
         return Arrays.stream(collection).filter(x -> !x.getCheckedOut()).toArray(LibraryItem[]::new);
     }
 
-    public LibraryItem[] findItemByTitle(String title, LibraryItemTypes type){
-        setCollectionByType(type);
+    public LibraryItem[] findItemByTitle(String title) {
         return Arrays.stream(collection).filter(x -> x.getTitle().equals(title)).toArray(LibraryItem[]::new);
     }
 
-    private void setCollectionByType(LibraryItemTypes type) {
-        switch (type) {
-            case BOOK:
-                collection = bookCollection;
-                break;
-            case MOVIE:
-                collection = movieCollection;
-                break;
+    public LibraryItem[] requestItem(String title) throws IOException {
+        return this.findItemByTitle(title);
+    }
+
+    public void alterItem(LibraryItem[] items, UIEnum fail, UIEnum success,
+                          Function<LibraryItem, Boolean> alter, LibraryItemTypes type) {
+        if (items.length > 1) {
+            // Display multiple items found, possible additional filtering by author
+        } else if (items.length == 0) {
+            UI.displaySystemMessage(fail, type.getValue());
+        } else {
+            UI.displaySystemMessage(alter.apply(items[0]) ? success : fail, type.getValue());
         }
     }
 }
