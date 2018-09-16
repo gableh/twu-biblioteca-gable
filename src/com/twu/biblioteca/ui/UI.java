@@ -1,8 +1,8 @@
 package com.twu.biblioteca.ui;
 
-import com.twu.biblioteca.object.LibraryItem;
 import com.twu.biblioteca.constants.OptionListEnum;
 import com.twu.biblioteca.constants.UIEnum;
+import com.twu.biblioteca.object.LibraryItem;
 
 public class UI {
     public static void displaySystemMessage(UIEnum msg, String... varArgs) {

@@ -1,11 +1,10 @@
 package com.twu.biblioteca.controllers.libraryitem;
 
-import com.twu.biblioteca.object.LibraryItem;
 import com.twu.biblioteca.constants.LibraryItemTypes;
 import com.twu.biblioteca.constants.OptionListEnum;
 import com.twu.biblioteca.constants.UIEnum;
-import com.twu.biblioteca.object.Book;
 import com.twu.biblioteca.object.Library;
+import com.twu.biblioteca.object.LibraryItem;
 import com.twu.biblioteca.store.BookStore;
 import com.twu.biblioteca.ui.UI;
 

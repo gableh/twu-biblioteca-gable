@@ -1,7 +1,5 @@
 package com.twu.biblioteca.object;
 
-import com.twu.biblioteca.constants.LibraryItemTypes;
-
 public interface LibraryItem {
     static boolean checkoutItem(LibraryItem item) {
         if (!item.getCheckedOut()) {
