@@ -1,24 +1,19 @@
 package com.twu.biblioteca;
 
 import com.twu.biblioteca.constants.ControllerTypes;
-import com.twu.biblioteca.constants.LibraryItemTypes;
 import com.twu.biblioteca.constants.OptionListEnum;
-import com.twu.biblioteca.controllers.LibraryController;
-import com.twu.biblioteca.object.Library;
-import com.twu.biblioteca.ui.UI;
 import com.twu.biblioteca.constants.UIEnum;
+import com.twu.biblioteca.controllers.LibraryController;
+import com.twu.biblioteca.ui.UI;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.function.Function;
 
 public class BibliotecaApp {
 
     private boolean hasNotQuit = true;
     private String userInput;
-    private String bookTitle;
-    private String movieTitle;
     private BufferedReader br;
 
     public void run() throws IOException {
