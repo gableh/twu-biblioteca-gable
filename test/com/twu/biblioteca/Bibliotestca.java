@@ -30,6 +30,23 @@ public class Bibliotestca {
     }
 
     @Test
+    public void itShouldQuit() throws IOException {
+        ByteArrayInputStream in = new ByteArrayInputStream("quit\n".getBytes());
+        System.setIn(in);
+        bibliotecaApp = new BibliotecaApp();
+        bibliotecaApp.run();
+        assertEquals("Welcome!\n" +
+                "List of available options.\n" +
+                "1. List Books\n" +
+                "2. List Movies\n" +
+                "3. Checkout Book\n" +
+                "4. Checkout Movie\n" +
+                "5. Return Book\n" +
+                "6. Return Movie\n" +
+                "7. Quit\n" +
+                "What would you like to do?\n", outContent.toString());
+    }
+    @Test
     public void itShouldHandleRubbishInput() throws IOException {
         //Need to include the quit command here, otherwise it will stall on the while loop
         ByteArrayInputStream in = new ByteArrayInputStream("rubbish\nquit\n".getBytes());
