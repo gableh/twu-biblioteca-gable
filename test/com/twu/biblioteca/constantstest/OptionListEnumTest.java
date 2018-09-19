@@ -79,6 +79,6 @@ public class OptionListEnumTest {
     @Test
     public void itShouldCommandByIntegerOrder() {
         OptionListEnum e = OptionListEnum.parse("1");
-        assertEquals(OptionListEnum.LISTBOOK, e);
+        assertEquals(OptionListEnum.LOGIN, e);
     }
 }

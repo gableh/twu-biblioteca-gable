@@ -37,13 +37,16 @@ public class Bibliotestca {
         bibliotecaApp.run();
         assertEquals("Welcome!\n" +
                 "List of available options.\n" +
-                "1. List Books\n" +
-                "2. List Movies\n" +
-                "3. Checkout Book\n" +
-                "4. Checkout Movie\n" +
-                "5. Return Book\n" +
-                "6. Return Movie\n" +
-                "7. Quit\n" +
+                "1. Login\n" +
+                "2. List Books\n" +
+                "3. List Movies\n" +
+                "4. Checkout Book\n" +
+                "5. Checkout Movie\n" +
+                "6. Return Book\n" +
+                "7. Return Movie\n" +
+                "8. whoami\n" +
+                "9. Logout\n" +
+                "10. Quit\n" +
                 "What would you like to do?\n", outContent.toString());
     }
     @Test
@@ -55,23 +58,29 @@ public class Bibliotestca {
         bibliotecaApp.run();
         assertEquals("Welcome!\n" +
                 "List of available options.\n" +
-                "1. List Books\n" +
-                "2. List Movies\n" +
-                "3. Checkout Book\n" +
-                "4. Checkout Movie\n" +
-                "5. Return Book\n" +
-                "6. Return Movie\n" +
-                "7. Quit\n" +
+                "1. Login\n" +
+                "2. List Books\n" +
+                "3. List Movies\n" +
+                "4. Checkout Book\n" +
+                "5. Checkout Movie\n" +
+                "6. Return Book\n" +
+                "7. Return Movie\n" +
+                "8. whoami\n" +
+                "9. Logout\n" +
+                "10. Quit\n" +
                 "What would you like to do?\n" +
                 "Select a valid option!\n" +
                 "List of available options.\n" +
-                "1. List Books\n" +
-                "2. List Movies\n" +
-                "3. Checkout Book\n" +
-                "4. Checkout Movie\n" +
-                "5. Return Book\n" +
-                "6. Return Movie\n" +
-                "7. Quit\n" +
+                "1. Login\n" +
+                "2. List Books\n" +
+                "3. List Movies\n" +
+                "4. Checkout Book\n" +
+                "5. Checkout Movie\n" +
+                "6. Return Book\n" +
+                "7. Return Movie\n" +
+                "8. whoami\n" +
+                "9. Logout\n" +
+                "10. Quit\n" +
                 "What would you like to do?\n", outContent.toString());
     }
 }

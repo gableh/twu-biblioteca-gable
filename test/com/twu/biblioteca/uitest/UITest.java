@@ -1,10 +1,10 @@
 package com.twu.biblioteca.uitest;
 
-import com.twu.biblioteca.object.LibraryItem;
 import com.twu.biblioteca.constants.LibraryItemTypes;
-import com.twu.biblioteca.object.Book;
-import com.twu.biblioteca.ui.UI;
 import com.twu.biblioteca.constants.UIEnum;
+import com.twu.biblioteca.object.Book;
+import com.twu.biblioteca.object.LibraryItem;
+import com.twu.biblioteca.ui.UI;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -43,13 +43,16 @@ public class UITest {
     public void itShouldDisplayAnOptionListMessage() {
         UI.displaySystemMessage(UIEnum.OPTION_LIST);
         assertEquals("List of available options.\n" +
-                "1. List Books\n" +
-                "2. List Movies\n" +
-                "3. Checkout Book\n" +
-                "4. Checkout Movie\n" +
-                "5. Return Book\n" +
-                "6. Return Movie\n" +
-                "7. Quit\n", outContent.toString());
+                "1. Login\n" +
+                "2. List Books\n" +
+                "3. List Movies\n" +
+                "4. Checkout Book\n" +
+                "5. Checkout Movie\n" +
+                "6. Return Book\n" +
+                "7. Return Movie\n" +
+                "8. whoami\n" +
+                "9. Logout\n" +
+                "10. Quit\n", outContent.toString());
     }
 
     @Test
@@ -104,5 +107,29 @@ public class UITest {
                 "Title: book2, Author: author, Year Published: 1993\n" +
                 "Title: book3, Author: author, Year Published: 1993\n" +
                 "------------------------\n", outContent.toString());
+    }
+
+    @Test
+    public void itShouldDisplayNotLoggedInMessage() {
+        UI.displaySystemMessage(UIEnum.NOT_LOGGED_IN);
+        assertEquals("You need to login first!\n", outContent.toString());
+    }
+
+    @Test
+    public void itShouldDisplayWrongOwnerMessage() {
+        UI.displaySystemMessage(UIEnum.WRONG_OWNER);
+        assertEquals("You do not own this book or are not logged in\n", outContent.toString());
+    }
+
+    @Test
+    public void itShouldDisplayInvalidCredentialsMessage() {
+        UI.displaySystemMessage(UIEnum.INVALID_CREDENTIALS);
+        assertEquals("Invalid Credentials\n", outContent.toString());
+    }
+
+    @Test
+    public void itShouldDisplayInvalidUserMessage() {
+        UI.displaySystemMessage(UIEnum.INVALID_USER);
+        assertEquals("Login Id must be of type xxx-xxxx\n", outContent.toString());
     }
 }
