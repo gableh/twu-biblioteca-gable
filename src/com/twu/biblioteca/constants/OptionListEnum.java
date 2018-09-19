@@ -1,12 +1,15 @@
 package com.twu.biblioteca.constants;
 
 public enum OptionListEnum {
-    LISTBOOK("List Books", ControllerTypes.LibraryItem, LibraryItemTypes.BOOK),
-    LISTMOVIE("List Movies", ControllerTypes.LibraryItem, LibraryItemTypes.MOVIE),
-    CHECKOUTBOOK("Checkout Book", ControllerTypes.LibraryItem, LibraryItemTypes.BOOK),
-    CHECKOUTMOVIE("Checkout Movie", ControllerTypes.LibraryItem, LibraryItemTypes.MOVIE),
-    RETURNBOOK("Return Book", ControllerTypes.LibraryItem, LibraryItemTypes.BOOK),
-    RETURNMOVIE("Return Movie", ControllerTypes.LibraryItem, LibraryItemTypes.MOVIE),
+    LOGIN("Login", ControllerTypes.USER),
+    LISTBOOK("List Books", ControllerTypes.LIBRARY_ITEM, LibraryItemTypes.BOOK),
+    LISTMOVIE("List Movies", ControllerTypes.LIBRARY_ITEM, LibraryItemTypes.MOVIE),
+    CHECKOUTBOOK("Checkout Book", ControllerTypes.LIBRARY_ITEM, LibraryItemTypes.BOOK),
+    CHECKOUTMOVIE("Checkout Movie", ControllerTypes.LIBRARY_ITEM, LibraryItemTypes.MOVIE),
+    RETURNBOOK("Return Book", ControllerTypes.LIBRARY_ITEM, LibraryItemTypes.BOOK),
+    RETURNMOVIE("Return Movie", ControllerTypes.LIBRARY_ITEM, LibraryItemTypes.MOVIE),
+    WHOAMI("whoami", ControllerTypes.USER),
+    LOGOUT("Logout", ControllerTypes.USER),
     QUIT("Quit", ControllerTypes.UI);
 
     private final String value;

@@ -4,6 +4,7 @@ import com.twu.biblioteca.constants.ControllerTypes;
 import com.twu.biblioteca.constants.OptionListEnum;
 import com.twu.biblioteca.constants.UIEnum;
 import com.twu.biblioteca.controllers.LibraryController;
+import com.twu.biblioteca.controllers.UserController;
 import com.twu.biblioteca.ui.UI;
 
 import java.io.BufferedReader;
@@ -20,9 +21,8 @@ public class BibliotecaApp {
         br = new BufferedReader(new InputStreamReader(System.in));
 
         LibraryController libraryController = new LibraryController();
-
         UI.displaySystemMessage(UIEnum.WELCOME_MESSAGE);
-
+        UserController.init();
         while (hasNotQuit) {
 
             UI.displaySystemMessage(UIEnum.OPTION_LIST);
@@ -33,8 +33,10 @@ public class BibliotecaApp {
 
             if (parsedInput == null) {
                 UI.displaySystemMessage(UIEnum.OPTION_INVALID);
-            } else if (parsedInput.belongsToControllerType(ControllerTypes.LibraryItem)) {
+            } else if (parsedInput.belongsToControllerType(ControllerTypes.LIBRARY_ITEM)) {
                 libraryController.handle(parsedInput);
+            } else if (parsedInput.belongsToControllerType(ControllerTypes.USER)) {
+                UserController.handle(parsedInput);
             } else if (parsedInput == OptionListEnum.QUIT) {
                 hasNotQuit = false;
             }

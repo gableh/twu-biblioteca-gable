@@ -16,9 +16,8 @@ public class MovieController extends LibraryItemController {
     private Library library;
 
     public MovieController() {
-        MovieStore movieStore = new MovieStore();
         br = new BufferedReader(new InputStreamReader(System.in));
-        library = new Library(movieStore.get());
+        library = new Library(MovieStore.get());
     }
 
     public void handle(OptionListEnum parsedInput) throws IOException {
@@ -28,11 +27,11 @@ public class MovieController extends LibraryItemController {
         } else if (parsedInput == OptionListEnum.RETURNMOVIE) {
             String title = super.getTitle(LibraryItemTypes.MOVIE);
             LibraryItem[] movies = this.library.requestItem(title);
-            this.library.alterItem(movies, UIEnum.RETURN_FAIL, UIEnum.RETURN_SUCCESS, LibraryItem::returnItem, LibraryItemTypes.MOVIE);
+            this.library.alterItem(movies, UIEnum.RETURN_FAIL, LibraryItem::returnItem, LibraryItemTypes.MOVIE);
         } else if (parsedInput == OptionListEnum.CHECKOUTMOVIE) {
             String title = super.getTitle(LibraryItemTypes.MOVIE);
             LibraryItem[] books = library.requestItem(title);
-            this.library.alterItem(books, UIEnum.CHECKOUT_FAIL, UIEnum.CHECKOUT_SUCCESS, LibraryItem::checkoutItem, LibraryItemTypes.MOVIE);
+            this.library.alterItem(books, UIEnum.CHECKOUT_FAIL, LibraryItem::checkoutItem, LibraryItemTypes.MOVIE);
         }
     }
 }

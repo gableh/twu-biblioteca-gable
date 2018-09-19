@@ -37,14 +37,31 @@ public class UI {
             case USER_INPUT_ITEM:
                 System.out.println("Please enter a " + varArgs[0] + " title.");
                 break;
+            case NOT_LOGGED_IN:
+                System.out.println("You need to login first!");
+                break;
+            case ALREADY_LOGGED_IN:
+                System.out.println("You are already logged in!");
+                break;
+            case WRONG_OWNER:
+                System.out.println("You do not own this book or are not logged in");
+                break;
+            case INVALID_CREDENTIALS:
+                System.out.println("Invalid Credentials");
+                break;
+            case WHOAMI:
+                System.out.println("Your credentials are:\n" + varArgs[0]);
+                break;
+            case INVALID_USER:
+                System.out.println("Login Id must be of type xxx-xxxx");
         }
     }
 
     public static void displayItems(LibraryItem[] items) {
         System.out.println("Currently available for checkout:");
         System.out.println("------------------------");
-        for (int i = 0; i < items.length; i++) {
-            System.out.println(items[i]);
+        for (LibraryItem item : items) {
+            System.out.println(item);
         }
         System.out.println("------------------------");
     }

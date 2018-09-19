@@ -2,5 +2,6 @@ package com.twu.biblioteca.constants;
 
 public enum ControllerTypes {
     UI,
-    LibraryItem
+    LIBRARY_ITEM,
+    USER,
 }

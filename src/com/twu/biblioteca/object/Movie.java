@@ -6,7 +6,7 @@ public class Movie implements LibraryItem {
     private String directorName;
     private int yearReleased;
     private String title;
-    private Boolean isCheckedOut;
+    private String isCheckedOut;
     private int rating;
 
     private LibraryItemTypes type;
@@ -16,7 +16,7 @@ public class Movie implements LibraryItem {
         this.directorName = directorName;
         this.yearReleased = yearReleased;
         this.rating = rating;
-        this.isCheckedOut = false;
+        this.isCheckedOut = null;
         this.type = LibraryItemTypes.MOVIE;
 
     }
@@ -34,11 +34,16 @@ public class Movie implements LibraryItem {
     }
 
     public boolean getCheckedOut() {
-        return isCheckedOut;
+        return isCheckedOut != null;
     }
 
-    public void setCheckedOut(boolean checkedOut) {
-        isCheckedOut = checkedOut;
+    public void setCheckedOut(String userId) {
+        isCheckedOut = userId;
+    }
+
+
+    public String checkedOutBy() {
+        return isCheckedOut;
     }
 
     public String getDirectorName() {

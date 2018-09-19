@@ -2,6 +2,15 @@ package com.twu.biblioteca.object;
 
 public class User {
     private String loginId;
+
+    public String getLoginId() {
+        return loginId;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
     private String password;
     private String name;
     private String emailAddress;
@@ -13,5 +22,12 @@ public class User {
         this.name = name;
         this.emailAddress = emailAddress;
         this.phoneNumber = phoneNumber;
+    }
+
+    @Override
+    public String toString() {
+        return "Name:" + name + "\n" +
+                "EmailAddress:" + emailAddress + "\n" +
+                "PhoneNumber:" + phoneNumber + "\n";
     }
 }

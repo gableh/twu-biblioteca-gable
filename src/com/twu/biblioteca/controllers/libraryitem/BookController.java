@@ -15,8 +15,7 @@ public class BookController extends LibraryItemController {
 
     public BookController() {
         super();
-        BookStore bookStore = new BookStore();
-        library = new Library(bookStore.get());
+        library = new Library(BookStore.get());
     }
 
     public void handle(OptionListEnum parsedInput) throws IOException {
@@ -27,11 +26,11 @@ public class BookController extends LibraryItemController {
         } else if (parsedInput == OptionListEnum.RETURNBOOK) {
             String title = super.getTitle(LibraryItemTypes.BOOK);
             LibraryItem[] books = this.library.requestItem(title);
-            this.library.alterItem(books, UIEnum.RETURN_FAIL, UIEnum.RETURN_SUCCESS, LibraryItem::returnItem, LibraryItemTypes.BOOK);
+            this.library.alterItem(books, UIEnum.RETURN_FAIL, LibraryItem::returnItem, LibraryItemTypes.BOOK);
         } else if (parsedInput == OptionListEnum.CHECKOUTBOOK) {
             String title = super.getTitle(LibraryItemTypes.BOOK);
             LibraryItem[] books = library.requestItem(title);
-            this.library.alterItem(books, UIEnum.CHECKOUT_FAIL, UIEnum.CHECKOUT_SUCCESS, LibraryItem::checkoutItem, LibraryItemTypes.BOOK);
+            this.library.alterItem(books, UIEnum.CHECKOUT_FAIL, LibraryItem::checkoutItem, LibraryItemTypes.BOOK);
         }
     }
 }
