@@ -47,11 +47,13 @@ public class UserController {
     }
 
     private static void authenticateUser() throws IOException {
+        UI.displaySystemMessage(UIEnum.LOGIN_PROMPT);
         String loginId = br.readLine();
         if (!isValid(loginId)) {
             UI.displaySystemMessage(UIEnum.INVALID_USER);
             return;
         }
+        UI.displaySystemMessage(UIEnum.PASSWORD_PROMPT);
         String password = br.readLine();
         for (User user : users) {
             if (user.getLoginId().equals(loginId) && user.getPassword().equals(password)) {

@@ -63,7 +63,7 @@ public class UserControllerTest {
         UserController.init();
         UserController.handle(OptionListEnum.LOGIN);
         assertEquals(null, UserController.getCurrentUser());
-        assertEquals("Login Id must be of type xxx-xxxx\n", outContent.toString());
+        assertEquals("Please enter login id:\nLogin Id must be of type xxx-xxxx\n", outContent.toString());
     }
 
     private void login() throws IOException {

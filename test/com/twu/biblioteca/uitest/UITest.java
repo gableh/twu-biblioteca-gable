@@ -132,4 +132,16 @@ public class UITest {
         UI.displaySystemMessage(UIEnum.INVALID_USER);
         assertEquals("Login Id must be of type xxx-xxxx\n", outContent.toString());
     }
+
+    @Test
+    public void itShouldDisplayLoginPromptMessage() {
+        UI.displaySystemMessage(UIEnum.LOGIN_PROMPT);
+        assertEquals("Please enter login id:\n", outContent.toString());
+    }
+
+    @Test
+    public void itShouldDisplayPasswordPromptMessage() {
+        UI.displaySystemMessage(UIEnum.PASSWORD_PROMPT);
+        assertEquals("Please enter password:\n", outContent.toString());
+    }
 }

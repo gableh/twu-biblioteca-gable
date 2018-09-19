@@ -54,6 +54,13 @@ public class UI {
                 break;
             case INVALID_USER:
                 System.out.println("Login Id must be of type xxx-xxxx");
+                break;
+            case LOGIN_PROMPT:
+                System.out.println("Please enter login id:");
+                break;
+            case PASSWORD_PROMPT:
+                System.out.println("Please enter password:");
+                break;
         }
     }
 
