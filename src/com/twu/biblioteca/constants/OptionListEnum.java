@@ -28,14 +28,6 @@ public enum OptionListEnum {
         this.libraryItemType = itemType;
     }
 
-    public boolean belongsToLibraryItemType(LibraryItemTypes itemType) {
-        return this.libraryItemType == itemType;
-    }
-
-    public boolean belongsToControllerType(ControllerTypes itemType) {
-        return this.controllerType == itemType;
-    }
-
     public static OptionListEnum parse(String input) {
         try {
             int parsedInt = Integer.parseInt(input);
@@ -44,7 +36,7 @@ public enum OptionListEnum {
                     return e;
                 }
             }
-        } catch (NumberFormatException exception){
+        } catch (NumberFormatException exception) {
             for (OptionListEnum e : OptionListEnum.values()) {
                 if (input.equalsIgnoreCase(e.value)) {
                     return e;
@@ -53,6 +45,14 @@ public enum OptionListEnum {
         }
 
         return null;
+    }
+
+    public boolean belongsToLibraryItemType(LibraryItemTypes itemType) {
+        return this.libraryItemType == itemType;
+    }
+
+    public boolean belongsToControllerType(ControllerTypes itemType) {
+        return this.controllerType == itemType;
     }
 
     public String getValue() {

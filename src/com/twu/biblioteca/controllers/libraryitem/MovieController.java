@@ -22,7 +22,7 @@ public class MovieController extends LibraryItemController {
 
     public void handle(OptionListEnum parsedInput) throws IOException {
         if (parsedInput == OptionListEnum.LISTMOVIE) {
-            LibraryItem[] movies =library.getAvailableItems();
+            LibraryItem[] movies = library.getAvailableItems();
             UI.displayItems(movies);
         } else if (parsedInput == OptionListEnum.RETURNMOVIE) {
             String title = super.getTitle(LibraryItemTypes.MOVIE);
